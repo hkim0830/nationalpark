@@ -16,7 +16,7 @@ h1 {
 
  #mapcontainer {
     position: relative;
-    width: 950px;  
+    width: 60%;  
     height: auto; 
     margin-left: 20px;
   }
@@ -25,6 +25,7 @@ h1 {
   flex-direction: row;
   justify-content: space-between;
   align-items: flex-start;
+  width: 100%;
 }
 .parkdot {
   position: absolute; 
@@ -40,11 +41,35 @@ h1 {
   color: #008000; 
 }
 
+.upload-btn {
+    padding: 2px 5px;
+    margin-left: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    display:none;
+}
+
+#image-display-container {
+    margin-top: 20px;
+}
+
+.park-name {
+    cursor: pointer; 
+    transition: color 0.3s;
+    display: inline-block; 
+}
+
+
+.park-name:hover {
+    text-decoration: underline; 
+}
+
 #parknamescontainer {
   flex: 0 1 auto; 
   padding: 10px;
   column-count: 2;
   column-gap: 40px; 
+  width: 30%;
   overflow: auto;
   font-size: 20px; 
   font-family: 'Copperplate', fantasy; 
@@ -59,6 +84,7 @@ h1 {
 }
 .selected {
   color: #008000; 
+  font-weight: bold;
 }
 
 #ParkDot-Acadia {
@@ -77,17 +103,17 @@ h1 {
 	<div class="flex-container">
 		<div id="mapcontainer">
 			<img src="usamap.png" alt="USA Map" style="width:950px; height:auto;"/>
-			<div id="mapcontainer">
-
-  		<button id="ParkDot-Acadia" class="parkdot" onclick="toggleParkSelection('Acadia')">&#x25BC;</button>
- 
-</div>
-
-			<div id="ParkName"></div> 
-		</div>
+			<button id="ParkDot-Acadia" class="parkdot" onclick="TogglePark(this)">&#x25BC;</button>
+    </div>
+    <div id=ParkName></div>
 		<div id="parknamescontainer">
-			<div id="ParkName-Acadia" class="park-name" onclick="toggleParkSelection('Acadia')">Acadia</div>
-			<div id="Click-AmericanSamoa" onclick="toggleGreenText(event)" class="ClickBox">American Samoa</div>
+			
+			<div id="Click-Acadia" class="park-name" onclick="TogglePark(this)">
+        Acadia <button class="upload-btn" onclick="uploadImage('Acadia', event)" style="display:none;">+</button>
+      </div>
+
+			<div id="Click-AmericanSamoa" onclick="toggleGreenText(event)" class="ClickBox">American Samoa
+			</div>
 			<div id="Click-Arches" onclick="toggleGreenText(event)" class="ClickBox">Arches</div>
 			<div id="Click-Badlands" onclick="toggleGreenText(event)" class="ClickBox">Badlands</div>
 			<div id="Click-BigBend" onclick="toggleGreenText(event)" class="ClickBox">Big Bend</div>
@@ -151,6 +177,7 @@ h1 {
 			<div id="Click-Zion" onclick="toggleGreenText(event)" class="ClickBox">Zion</div>
 	</div> 
 </div>
+<div id="image-display-container"></div>
 <script src="nationalpark.js"></script>
 </body>
 </html>
